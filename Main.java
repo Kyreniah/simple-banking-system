@@ -6,20 +6,23 @@ import java.util.Scanner;
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static ArrayList<Card> cards = new ArrayList<Card>();
+    private static ArrayList<Card> cards = new ArrayList<>();
 
     public static void main(String[] args) {
         startBanking();
     }
 
     private static void startBanking() {
-        System.out.println("1. Create an account");
-        System.out.println("2. Log into account");
-        System.out.println("0. Exit");
 
-        int option = scanner.nextInt();
+        int option;
 
         do {
+            System.out.println("1. Create an account");
+            System.out.println("2. Log into account");
+            System.out.println("0. Exit");
+
+            option = scanner.nextInt();
+
             switch (option) {
                 case 1:
                     createCard();
@@ -31,7 +34,6 @@ public class Main {
                     bye();
                     break;
             }
-            option = scanner.nextInt();
         } while (option != 0);
     }
 
@@ -51,7 +53,7 @@ public class Main {
         System.out.println("Enter your PIN");
         int pin = scanner.nextInt();
 
-        if (cards.stream().anyMatch(c -> c.number == number && c.pin == pin)) {
+        if (cards.stream().anyMatch(c -> c.number.equals(number) && c.pin == pin)) {
             System.out.println("You have successfully logged in!");
             int option;
             do {
@@ -78,10 +80,10 @@ public class Main {
 
     private static void logout() {
         System.out.println("You have successfully logged out!");
-        startBanking();
     }
 
     private static void bye() {
         System.out.println("Bye!");
+        System.exit(0);
     }
 }

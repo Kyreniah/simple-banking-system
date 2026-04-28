@@ -3,10 +3,10 @@ package banking;
 import java.util.Random;
 
 public class Card {
-    long number;
+    String number;
     int pin;
 
-    public Card(long number, int pin) {
+    public Card(String number, int pin) {
         this.number = number;
         this.pin = pin;
     }
@@ -17,7 +17,7 @@ public class Card {
         for (int i = 0; i < 10; i++) {
             str += Integer.toString(rnd.nextInt(9));
         }
-        long number = Long.parseLong(str);
+        String number = str;
         int pin = rnd.nextInt(9999);
         return new Card(number, pin);
     }
