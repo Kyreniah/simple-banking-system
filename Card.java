@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Card {
     String number;
-    int pin;
+    String pin;
 
-    public Card(String number, int pin) {
+    public Card(String number, String pin) {
         this.number = number;
         this.pin = pin;
     }
@@ -18,7 +18,7 @@ public class Card {
             str.append(rnd.nextInt(10));
         }
         String number = str.toString();
-        int pin = rnd.nextInt(9999);
+        String pin = String.format("%04d", rnd.nextInt(10000));
         return new Card(number, pin);
     }
 

@@ -42,16 +42,16 @@ public class Main {
         cards.add(card);
         System.out.println("Your card has been created");
         System.out.println("Your card number:\n" + card.number);
-        System.out.printf("Your card PIN:\n%04d\n", card.pin);
+        System.out.println("Your card PIN:\n" + card.pin);
     }
 
     private static void login() {
         System.out.println("Enter your card number");
         String number = scanner.next();
         System.out.println("Enter your PIN");
-        int pin = scanner.nextInt();
+        String pin = scanner.next();
 
-        if (cards.stream().anyMatch(c -> c.number.equals(number) && c.pin == pin)) {
+        if (cards.stream().anyMatch(c -> c.number.equals(number) && c.pin.equals(pin))) {
             System.out.println("You have successfully logged in!");
             int option;
             do {
