@@ -19,41 +19,69 @@ public class Main {
 
         int option = scanner.nextInt();
 
-        while (option != 0) {
+        do {
             switch (option) {
-                case 1: createCard();
+                case 1:
+                    createCard();
                     break;
-                case 2: login();
+                case 2:
+                    login();
+                    break;
+                case 0:
+                    bye();
                     break;
             }
             option = scanner.nextInt();
-        }
-
-        logout();
+        } while (option != 0);
     }
 
     private static void createCard() {
         Card card = Card.generateCard();
         cards.add(card);
         System.out.println("Your card has been created");
-        System.out.println("Your card number: " + card.number);
-        System.out.println("Your card PIN:  " + card.pin);
+        System.out.println("Your card number:");
+        System.out.println(card.number);
+        System.out.println("Your card PIN:");
+        System.out.println(card.pin);
     }
 
     private static void login() {
         System.out.println("Enter your card number");
-        int number = scanner.nextInt();
-        System.out.printf("Enter your PIN");
+        long number = scanner.nextLong();
+        System.out.println("Enter your PIN");
         int pin = scanner.nextInt();
 
         if (cards.stream().anyMatch(c -> c.number == number && c.pin == pin)) {
             System.out.println("You have successfully logged in!");
+            int option;
+            do {
+                System.out.println("1. Balance");
+                System.out.println("2. Log out");
+                System.out.println("0. Exit");
+                option = scanner.nextInt();
+                switch (option) {
+                    case 1:
+                        System.out.println("Balance: 0");
+                        break;
+                    case 2:
+                        logout();
+                        break;
+                    case 0:
+                        bye();
+                        break;
+                }
+            } while (option == 1);
         }  else {
-            System.out.printf("Wrong card number or PIN!");
+            System.out.println("Wrong card number or PIN!");
         }
     }
 
     private static void logout() {
         System.out.println("You have successfully logged out!");
+        startBanking();
+    }
+
+    private static void bye() {
+        System.out.println("Bye!");
     }
 }
