@@ -13,11 +13,11 @@ public class Card {
 
     static Card generateCard() {
         Random rnd = new Random();
-        String str = "400000";
+        StringBuilder str = new StringBuilder("400000");
         for (int i = 0; i < 10; i++) {
-            str += Integer.toString(rnd.nextInt(9));
+            str.append(rnd.nextInt(10));
         }
-        String number = str;
+        String number = str.toString();
         int pin = rnd.nextInt(9999);
         return new Card(number, pin);
     }

@@ -41,15 +41,13 @@ public class Main {
         Card card = Card.generateCard();
         cards.add(card);
         System.out.println("Your card has been created");
-        System.out.println("Your card number:");
-        System.out.println(card.number);
-        System.out.println("Your card PIN:");
-        System.out.println(card.pin);
+        System.out.println("Your card number:\n" + card.number);
+        System.out.printf("Your card PIN:\n%04d\n", card.pin);
     }
 
     private static void login() {
         System.out.println("Enter your card number");
-        long number = scanner.nextLong();
+        String number = scanner.next();
         System.out.println("Enter your PIN");
         int pin = scanner.nextInt();
 
@@ -84,6 +82,5 @@ public class Main {
 
     private static void bye() {
         System.out.println("Bye!");
-        System.exit(0);
     }
 }
